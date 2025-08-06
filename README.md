@@ -91,16 +91,6 @@ npm run build
 php artisan serve --host=0.0.0.0 --port=8080
 ```
 
----
-
-## 🔐 Akun Default (setelah `db:seed`)
-
-| Email             | Password   |
-|-------------------|------------|
-| admin@paws.test   | password   |
-
----
-
 ## 🗂️ Struktur Folder
 
 ```text
