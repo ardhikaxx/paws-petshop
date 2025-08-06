@@ -122,29 +122,3 @@ paws-petshop/
 ├── composer.json
 └── package.json
 ```
-
----
-
-## 🧪 Testing
-
-```bash
-php artisan test
-```
-
----
-
-## 📝 Lisensi
-
-Proyek ini bersifat open-source di bawah lisensi **MIT**.  
-Silakan fork, bintangi ⭐, dan kontribusi!
-
----
-
-## 💬 Butuh Bantuan?
-
-- **Issues**: Buat issue baru di GitHub  
-- **Email**: support@paws-petshop.com  
-
----
-
-> Happy coding & semoga stok kucing Anda selalu terpantau!
