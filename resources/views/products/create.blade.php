@@ -1,22 +1,24 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight flex items-center">
                 <i class="fas fa-plus-circle text-primary mr-2"></i> Tambah Produk Baru
             </h2>
-            <a href="{{ route('dashboard') }}" class="text-gray-600 hover:text-primary transition-smooth flex items-center">
-                <i class="fas fa-arrow-left mr-1"></i> Kembali
+            <a href="{{ route('dashboard') }}"
+                class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-md shadow-sm text-sm font-medium">
+                <i class="fas fa-arrow-left mr-2"></i> Kembali
             </a>
         </div>
     </x-slot>
 
-    <div class="py-8">
+    <div class="py-1">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-xl">
                 <div class="p-8">
                     <div class="mb-6">
                         <h3 class="text-lg font-medium text-gray-900">Form Tambah Produk</h3>
-                        <p class="mt-1 text-sm text-gray-600">Isi formulir berikut untuk menambahkan produk baru ke katalog.</p>
+                        <p class="mt-1 text-sm text-gray-600">Isi formulir berikut untuk menambahkan produk baru ke
+                            katalog.</p>
                     </div>
 
                     <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
@@ -25,7 +27,8 @@
                         <div class="grid grid-cols-1 gap-6">
                             <!-- Product Name -->
                             <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700">Nama Produk <span class="text-red-500">*</span></label>
+                                <label for="name" class="block text-sm font-medium text-gray-700">Nama Produk <span
+                                        class="text-red-500">*</span></label>
                                 <div class="mt-1 relative rounded-md shadow-sm">
                                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                         <i class="fas fa-tag text-gray-400"></i>
@@ -38,7 +41,8 @@
 
                             <!-- Description -->
                             <div>
-                                <label for="description" class="block text-sm font-medium text-gray-700">Deskripsi <span class="text-red-500">*</span></label>
+                                <label for="description" class="block text-sm font-medium text-gray-700">Deskripsi <span
+                                        class="text-red-500">*</span></label>
                                 <div class="mt-1">
                                     <textarea id="description" name="description" rows="4" required
                                         class="shadow-sm focus:ring-primary focus:border-primary mt-1 block w-full sm:text-sm border border-gray-300 rounded-md py-3 px-4"
@@ -49,9 +53,11 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <!-- Stock -->
                                 <div>
-                                    <label for="stock" class="block text-sm font-medium text-gray-700">Stok <span class="text-red-500">*</span></label>
+                                    <label for="stock" class="block text-sm font-medium text-gray-700">Stok <span
+                                            class="text-red-500">*</span></label>
                                     <div class="mt-1 relative rounded-md shadow-sm">
-                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <div
+                                            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                             <i class="fas fa-boxes text-gray-400"></i>
                                         </div>
                                         <input type="number" name="stock" id="stock" min="0" required
@@ -62,9 +68,11 @@
 
                                 <!-- Price -->
                                 <div>
-                                    <label for="price" class="block text-sm font-medium text-gray-700">Harga (Rp) <span class="text-red-500">*</span></label>
+                                    <label for="price" class="block text-sm font-medium text-gray-700">Harga (Rp)
+                                        <span class="text-red-500">*</span></label>
                                     <div class="mt-1 relative rounded-md shadow-sm">
-                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <div
+                                            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                             <span class="text-gray-400">Rp</span>
                                         </div>
                                         <input type="number" name="price" id="price" min="0" required
@@ -76,12 +84,14 @@
 
                             <!-- Image -->
                             <div>
-                                <label for="image" class="block text-sm font-medium text-gray-700">Gambar Produk</label>
+                                <label for="image" class="block text-sm font-medium text-gray-700">Gambar
+                                    Produk</label>
                                 <div class="mt-1 flex items-center">
                                     <div class="relative w-full">
                                         <input type="file" name="image" id="image" accept="image/*"
                                             class="opacity-0 absolute inset-0 w-full h-full cursor-pointer">
-                                        <div class="flex flex-col items-center justify-center py-8 border-2 border-dashed border-gray-300 rounded-md bg-gray-50 hover:border-primary transition-smooth">
+                                        <div
+                                            class="flex flex-col items-center justify-center py-8 border-2 border-dashed border-gray-300 rounded-md bg-gray-50 hover:border-primary transition-smooth">
                                             <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"></i>
                                             <p class="text-sm text-gray-600">Klik untuk mengunggah gambar</p>
                                             <p class="text-xs text-gray-500 mt-1">Format: JPG, PNG (Maks. 2MB)</p>
@@ -115,12 +125,12 @@
                 const reader = new FileReader();
                 const preview = document.getElementById('preview-image');
                 const previewContainer = document.getElementById('image-preview');
-                
+
                 reader.onload = function(e) {
                     preview.src = e.target.result;
                     previewContainer.classList.remove('hidden');
                 }
-                
+
                 reader.readAsDataURL(file);
             }
         });

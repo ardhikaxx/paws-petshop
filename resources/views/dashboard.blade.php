@@ -130,12 +130,11 @@
 
                                                 <!-- Tombol Hapus -->
                                                 <form action="{{ route('products.destroy', $product->id) }}"
-                                                    method="POST"
-                                                    onsubmit="return confirm('Apakah Anda yakin ingin menghapus produk ini?');">
+                                                    method="POST" class="delete-form">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit"
-                                                        class="inline-flex items-center px-4 py-2 bg-red-100 text-red-700 hover:bg-red-200 hover:text-red-800 rounded-md shadow-sm transition">
+                                                    <button type="button"
+                                                        class="inline-flex items-center px-4 py-2 bg-red-100 text-red-700 hover:bg-red-200 hover:text-red-800 rounded-md shadow-sm transition delete-btn">
                                                         <i class="fas fa-trash-alt mr-2"></i> Hapus
                                                     </button>
                                                 </form>
@@ -210,4 +209,54 @@
             </div>
         </div>
     </div>
+
+    <!-- Include SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // SweetAlert for delete confirmation
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+            
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const form = this.closest('.delete-form');
+                    
+                    Swal.fire({
+                        title: 'Apakah Anda yakin?',
+                        text: "Produk yang dihapus tidak dapat dikembalikan!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#F2662B', // primary color
+                        cancelButtonColor: '#6B7280', // gray
+                        confirmButtonText: 'Ya, hapus!',
+                        cancelButtonText: 'Batal',
+                        customClass: {
+                            popup: 'rounded-xl',
+                            confirmButton: 'bg-primary hover:bg-accent transition',
+                            cancelButton: 'bg-gray-500 hover:bg-gray-600 transition'
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
+                });
+            });
+
+            // Show success message if exists
+            @if(session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sukses!',
+                    text: '{{ session('success') }}',
+                    confirmButtonColor: '#F2662B', // primary color
+                    customClass: {
+                        popup: 'rounded-xl',
+                        confirmButton: 'bg-primary hover:bg-accent transition'
+                    }
+                });
+            @endif
+        });
+    </script>
 </x-app-layout>
